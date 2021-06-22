@@ -13,7 +13,7 @@ class CreateVacunasTable extends Migration
      */
     public function up()
     {
-        Schema::create('vacuna', function (Blueprint $table) {
+        Schema::create('vacunas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

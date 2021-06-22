@@ -13,7 +13,7 @@ class CreateMascotasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mascota', function (Blueprint $table) {
+        Schema::create('mascotas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

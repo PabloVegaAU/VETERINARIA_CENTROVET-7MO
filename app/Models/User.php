@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Clientes;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -58,4 +60,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //un usuario le pertence a un solo cliente
+    public function clientes()
+    {
+        return $this->hasOne(Clientes::class);
+    }
 }

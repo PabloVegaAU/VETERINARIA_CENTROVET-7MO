@@ -13,8 +13,17 @@ class CreateClientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cliente', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre',100);
+            $table->string('apellido',100);
+            $table->string('dni',8)->unique();
+            $table->date('fecha_nac');
+            $table->string('edad',3);
+            $table->enum('sexo', ['m','f']);
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
