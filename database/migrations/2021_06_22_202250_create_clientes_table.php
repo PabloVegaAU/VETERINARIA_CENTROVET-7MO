@@ -17,10 +17,12 @@ class CreateClientesTable extends Migration
             $table->id();
             $table->string('nombre',100);
             $table->string('apellido',100);
+            $table->string('celular',12);
             $table->string('dni',8)->unique();
             $table->date('fecha_nac');
             $table->string('edad',3);
             $table->enum('sexo', ['m','f']);
+            $table->string('domicilio',100);
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -15,6 +15,10 @@ class CreateConsultasTable extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_nac');
+            $table->string('sintomas',50);
+            $table->string('diagnostico',250);
+            $table->unsignedBigInteger('id_mascota');
             $table->timestamps();
         });
     }

@@ -27,10 +27,12 @@ class ClientesFactory extends Factory
 
         return [
             "apellido" => $this->faker->lastName,
+            "celular" => this->faker->randomNumber(9),
             "dni" => $this->faker->randomNumber(8),
             "fecha_nac" => $date,
             "edad" => $this->faker->randomNumber(2),
-            "sexo" => $this->faker->randomElement(["m","f"])
+            "sexo" => $this->faker->randomElement(["m","f"]),
+            "domicilio" => $this->faker->lastName,
         ];
     }
 }

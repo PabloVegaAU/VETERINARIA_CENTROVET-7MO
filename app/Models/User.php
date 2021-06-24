@@ -64,6 +64,6 @@ class User extends Authenticatable
     //un usuario le pertence a un solo cliente
     public function clientes()
     {
-        return $this->hasOne(Clientes::class);
+        return $this->hasOne(clientes::class);
     }
 }

@@ -27,9 +27,11 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'apellido' => ['required', 'string', 'max:100'],
             'edad' => ['required', 'int', 'max:110', 'min:1'],
+            'celular' => ['required', 'string', 'max:100'],
             'dni' => ['required','digits:8','numeric', 'unique:clientes'],
             'fecha_nac' => ['required'],
             'sexo' => ['required'],
+            'domicilio' => ['required', 'string', 'max:100'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
@@ -43,10 +45,12 @@ class CreateNewUser implements CreatesNewUsers
         Clientes::create([
             'nombre' => $user->name,
             'apellido' => $input['apellido'],
+            'celular' => $input['dni'],
             'dni' => $input['dni'],
             'fecha_nac' => $input['fecha_nac'],
             'edad' => $input['edad'],
             'sexo' => $input['sexo'],
+            'domicilio' => $input['dni'],
             'user_id' => $user->id,
         ]);
 

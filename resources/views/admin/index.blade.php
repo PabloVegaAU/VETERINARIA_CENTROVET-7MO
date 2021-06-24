@@ -3,11 +3,12 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-    <h1>Vacunas</h1>
+    <h1>Menu  de Administracion </h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Bienvenido al panel de administracion.</p>
+
 @stop
 
 @section('css')
@@ -15,5 +16,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script> console.log('Hola!'); </script>
 @stop

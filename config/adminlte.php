@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<strong>CENTRO</strong>VET',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/CentroVet.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -253,20 +253,20 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],*/
-        ['header' => 'account_settings'],
+        ['header' => 'GESTIONAR'],
         [
             'text' => 'Usuarios',
-            'url'  => 'admin/settings',
+            'route'  => 'admin.users.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Mascotas',
-            'url'  => 'Mascotas',
+            'route'  => 'admin.mascotas.index',
             'icon' => 'fas fa-fw fa-paw',
         ],
         [
             'text' => 'Vacunas',
-            'url'  => 'Vacunas',
+            'route'  => 'admin.vacunas.index',
             'icon' => 'fas fa-fw fa-syringe',
         ],
         /*[
