@@ -61,7 +61,7 @@ class ClientesController extends Controller
      */
     public function edit(Clientes $clientes)
     {
-        return var_dump($clientes);
+
         $mascotas = Mascotas::all();
         return view('admin.clientes.edit', compact('clientes','mascotas'));
     }
@@ -75,29 +75,7 @@ class ClientesController extends Controller
      */
     public function update(Request $request, Clientes $clientes)
     {
-        $leve = ['dni' => 'required|digits:8|integer',
-                'nombre'=>'required|string|between:1,20',
-                'apellido'=>'required'
-        ];
-        $estricto= ['dni' => 'required|digits:8|unique:doctors|integer',
-        'nombre'=>'required|string|between:1,20',
-        'apellido'=>'required'
-        ];
-        if ($request->dni == $cliente->dni) { //si el n_cmp son iguales a los que se enviaron
-            $request->validate($leve);
-        } else {
-            $request->validate($estricto);
-        }
-
-        //actualiza solo el modelo doctor
-        $clientes->update($request->only("dni"));
-        $clientes->update($request->only("nombre","apellido"));
-        //actualiza solo el modelo user
-        $clientes->user->update($request->only("name"));
-
-        return redirect()->route('admin.clientes.edit', $clientes)
-        ->with('mensaje','Cliente '.$clientes->nombre.' se editó correctamente');
-
+        //
     }
 
     /**

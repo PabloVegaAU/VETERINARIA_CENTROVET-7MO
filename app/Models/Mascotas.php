@@ -11,7 +11,7 @@ class Mascotas extends Model
 {
     use HasFactory;
 
-    //UNA MASCOTA PERTENECE  A MUCHOS Clientes
+    //UNA Clientes PERTENECE  A MUCHOS mascotas
     public function clientes()
     {
         return $this->belongsToMany(Clientes::class);

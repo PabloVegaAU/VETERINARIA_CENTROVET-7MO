@@ -1,9 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Blog 2021')
+@section('title', 'Centro Vet')
 
 @section('content_header')
 <h1>Menu de Usuarios </h1>
+<a href="{{ route('admin.users.create') }}" class="btn btn-success">Nuevo usuario </a>
 @stop
 
 @section('content')

@@ -13,7 +13,7 @@ class Clientes extends Model
 
     protected $guarded = [];
 
-    //UN Cliente LE PERTENECE A UN SOLO USUARIO
+    //UN USUARIO LE PERTENECE A UN SOLO Cliente
     public function user()
     {
         return $this->belongsTo(User::class);

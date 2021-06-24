@@ -3,7 +3,7 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-    <h1>Menu  de Administracion </h1>
+    <h1>Menu CENTRO_VET </h1>
 @stop
 
 @section('content')
