@@ -11,36 +11,37 @@
     {!! Form::open(['method' => 'POST', 'route' => 'admin.users.store']) !!}
 
     <div class="form-group">
-        {!! Form::label('name1', 'Nombres') !!}
-        {!! Form::text('name1', null, ['id'=>'name1', 'name'=>'name1','class'=>
+        {!! Form::label('nombre', 'Nombres') !!}
+        {!! Form::text('nombre', null, ['id'=>'nombre', 'name'=>'nombre','class'=>
         'form-control','placeholder'=>'Nombres'])
         !!}
     </div>
     <div class="form-group">
-        {!! Form::label('apellido1', 'Apellidos') !!}
-        {!! Form::text('apellido1', null, ['id'=>'apellido1', 'name'=>'apellido1','class'=>
+        {!! Form::label('apellido', 'Apellidos') !!}
+        {!! Form::text('apellido', null, ['id'=>'apellido', 'name'=>'apellido','class'=>
         'form-control','placeholder'=>'Apellidos']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('dni1', 'N° DNI') !!}
-        <div style="display: flex">
-            <x-jet-input id="dni1" class="mt-1 w-100" type="text" :value="old('dni')" name="dni1" required />
-            <input type="hidden" name="dni" id="dni" value="">
-            <input type="button" class="btn btn-warning" onclick="consultar()" value="Validar">
-        </div>
-    </div>
-    <div class="form-group">
-        {!! Form::label('email', 'Correo electronico') !!}
-        {!! Form::text('email', null, ['id'=>'email', 'name'=>'email','class'=>'form-control','placeholder'=>'Correo
-        Electronico']) !!}
+        {!! Form::label('dni', 'N° DNI') !!}
+        {!! Form::text('dni', null, ['id'=>'dni', 'name'=>'dni','class'=>
+        'form-control','placeholder'=>'N° de DNI']) !!}
+        <input type="button" class="btn btn-warning" onclick="consultar()" value="Validar">
     </div>
     <div class="form-group">
         {!! Form::label('celular', 'N° Celular') !!}
         {!! Form::text('celular', null, ['class'=>'form-control','placeholder'=>'N° Telefonico']) !!}
     </div>
     <div class="form-group">
+        {!! Form::label('fecha_nac', 'Fecha de nacimiento') !!}
+        {!! Form::date('fecha_nac', null, ['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('edad', 'Edad') !!}
+        {!! Form::text('edad', null, ['class'=>'form-control','placeholder'=>'Edad']) !!}
+    </div>
+    <div class="form-group">
         {!! Form::label('sexo', 'Sexo') !!}
-        {!! Form::text('sexo', null, ['class'=>'form-control','placeholder'=>'Sexo']) !!}
+        {!! Form::text('sexo', null, ['class'=>'form-control','placeholder'=>'m/f']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('domicilio', 'Domicilio') !!}

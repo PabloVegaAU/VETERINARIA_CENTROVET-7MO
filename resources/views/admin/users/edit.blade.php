@@ -3,7 +3,7 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>Editar a {{$user->name}}</h1>
+<h1>Editar a {{$user->nombre}}</h1>
 
 @stop
 
@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 {!! Form::label('nombre', 'Nombre') !!}
-                {!! Form::text('nombre', $user->name, ['class' => 'form-control','disabled']) !!}
+                {!! Form::text('nombre', $user->clientes->nombre, ['class' => 'form-control','disabled']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('apellido', 'Apellidos') !!}

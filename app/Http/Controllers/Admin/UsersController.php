@@ -43,47 +43,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        /* $request->validate([
-            'dni' => 'required|unique:clientes|digits:8|integer',
-            'name1' => 'required|max:100',
-            'apellido1' => 'required|max:100',
-            'email' => 'required|email|max:100',
+
+         $request->validate([
+            'nombre' => 'required|max:100',
+            'apellido' => 'required|max:100',
             'celular' => 'required|digits:9',
+            'dni' => 'required|digits:8|integer',
             'edad' => 'required|max:3',
             'sexo' => 'required|max:100',
+            'fecha_nac' => 'required',
             'domicilio' => 'required|max:100',
-        ]); */
-        Validator::make($input, [
-            'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
-            'apellido' => ['required', 'string', 'max:100'],
-            'edad' => ['required', 'int', 'max:110', 'min:1'],
-            'celular' => ['required', 'string', 'max:100'],
-            'dni' => ['required','digits:8','numeric', 'unique:clientes'],
-            'fecha_nac' => ['required'],
-            'sexo' => ['required'],
-            'domicilio' => ['required', 'string', 'max:100'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-        ])->validate();
-        $user = User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
         ]);
 
-        Clientes::create([
-            'nombre' => $user->name,
-            'apellido' => $input['apellido'],
-            'celular' => $input['dni'],
-            'dni' => $input['dni'],
-            'fecha_nac' => $input['fecha_nac'],
-            'edad' => $input['edad'],
-            'sexo' => $input['sexo'],
-            'domicilio' => $input['dni'],
-            'user_id' => $user->id,
-        ]);
-        return view('admin.users.index');
+        $cliente = Clientes::Create($request->all());
+        return redirect()->route('admin.clientes.index');
     }
 
     /**

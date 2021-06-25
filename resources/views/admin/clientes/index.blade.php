@@ -3,7 +3,8 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>Menu de Usuarios </h1>
+<h1>Menu de Clientes </h1>
+<a href="{{ route('admin.users.create') }}" class="btn btn-success">Nuevo Cliente </a>
 @stop
 
 @section('content')
@@ -17,24 +18,24 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>DNI</th>
-                    <th>Email</th>
-
-                    <th style="width:2px;text-align:center">Acciones</th>
+                    <th>Celular</th>
+                    <th>Domicilio</th>
+                    {{-- <th style="width:2px;text-align:center">Acciones</th> --}}
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($cliente as $clientes)
                 <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->clientes->nombre}}</td>
-                    <td>{{$user->clientes->apellido}}</td>
-                    <td>{{$user->clientes->dni}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{$clientes->id}}</td>
+                    <td>{{$clientes->nombre}}</td>
+                    <td>{{$clientes->apellido}}</td>
+                    <td>{{$clientes->dni}}</td>
+                    <td>{{$clientes->celular}}</td>
+                    <td>{{$clientes->domicilio}}</td>
+                    {{-- <td style="display:flex ">
 
-                    <td style="display:flex ">
-
-                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success">Editar</a>
-                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
+                        <a href="{{ route('admin.users.edit', $clientes) }}" class="btn btn-success">Editar</a>
+                        <form action="{{ route('admin.users.destroy', $clientes->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Eliminar" class="btn btn-danger"
@@ -42,7 +43,7 @@
                         </form>
 
 
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
 

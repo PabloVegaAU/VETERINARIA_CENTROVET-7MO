@@ -260,6 +260,11 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'Clientes',
+            'route'  => 'admin.clientes.index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'Mascotas',
             'route'  => 'admin.mascotas.index',
             'icon' => 'fas fa-fw fa-paw',
