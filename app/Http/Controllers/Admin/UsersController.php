@@ -32,7 +32,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        //
     }
 
     /**
@@ -43,20 +43,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
-         $request->validate([
-            'nombre' => 'required|max:100',
-            'apellido' => 'required|max:100',
-            'celular' => 'required|digits:9',
-            'dni' => 'required|digits:8|integer',
-            'edad' => 'required|max:3',
-            'sexo' => 'required|max:100',
-            'fecha_nac' => 'required',
-            'domicilio' => 'required|max:100',
-        ]);
-
-        $cliente = Clientes::Create($request->all());
-        return redirect()->route('admin.clientes.index');
+        //
     }
 
     /**
@@ -92,22 +79,19 @@ class UsersController extends Controller
      */
      public function update(Request $request,$user)
     {
-
     $userD = User::Find($user);
             $leve=[
                 'email' =>'required|string|email|max:100',
                 'celular'=>'required|digits:9|integer',
                 'fecha_nac'=>'required',
-                'edad'=>'required|digits:2|integer',
+                'edad'=>'required|digits:3|integer|max:150',
                 'sexo'=>'required|string',
                 'domicilio'=>'required|string'];
             $request->validate($leve);
 
 
         //actualiza solo el modelo user
-        $userD->update(['email'=>$request->email]);
-        //actualiza solo el modelo profile
-        $userD->clientes->update($request->only("celular","fecha_nac","edad","sexo"));
+        $userD->update($request->all());
 
        return redirect()->route('admin.users.edit',$userD);
 

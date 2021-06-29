@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Mascotas;
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 
 class MascotasController extends Controller
@@ -15,7 +16,8 @@ class MascotasController extends Controller
      */
     public function index()
     {
-        return view('admin.mascotas.index');
+        $mascotas = Mascotas::all();
+        return view('admin.mascotas.index',compact('mascotas'));
     }
 
     /**
@@ -25,7 +27,8 @@ class MascotasController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Clientes::all();
+        return view('admin.mascotas.create',compact('clientes'));
     }
 
     /**
@@ -36,7 +39,15 @@ class MascotasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:100',
+            'especie' => 'required|max:100',
+            'raza' => 'required|max:100',
+            'sexo' => 'required|max:100',
+        ]);
+
+        $mascotas = Mascotas::Create($request->all());
+        return redirect()->route('admin.mascotas.index');
     }
 
     /**
@@ -56,9 +67,10 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mascotas $mascotas)
+    public function edit($mascota)
     {
-        //
+        $mascotas = Mascotas::Find($mascota);
+        return view('admin.mascotas.edit', compact('mascotas'));
     }
 
     /**
@@ -68,9 +80,21 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mascotas $mascotas)
+    public function update(Request $request, $mascota)
     {
-        //
+        $mascotaD = Mascotas::Find($mascota);
+
+            $leve=[
+                'nombre'=>'required|string',
+                'especie'=>'required|string',
+                'raza'=>'required|string',
+                'sexo'=>'required|string'];
+            $request->validate($leve);
+
+            //actualiza cliente
+            $mascotaD->update($request->all());
+
+            return redirect()->route('admin.mascotas.edit',$mascotaD);
     }
 
     /**
@@ -79,8 +103,10 @@ class MascotasController extends Controller
      * @param  \App\Models\Mascotas  $mascotas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mascotas $mascotas)
+    public function destroy($mascotas)
     {
-        //
+        $mascota = Mascotas::Find($mascotas);
+        $mascota->delete();
+        return redirect()->route('admin.mascotas.index');
     }
 }

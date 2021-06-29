@@ -262,12 +262,17 @@ return [
         [
             'text' => 'Clientes',
             'route'  => 'admin.clientes.index',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-user-circle',
         ],
         [
             'text' => 'Mascotas',
             'route'  => 'admin.mascotas.index',
             'icon' => 'fas fa-fw fa-paw',
+        ],
+        [
+            'text' => 'Consultas',
+            'route'  => 'admin.consultas.index',
+            'icon' => 'fas fa-fw fa-book',
         ],
         [
             'text' => 'Vacunas',

@@ -18,7 +18,11 @@ class CreateMascotasTable extends Migration
             $table->string('nombre');
             $table->string('especie');
             $table->string('raza');
-            $table->string('sexo');
+            $table->enum('sexo', ['m','h']);
+
+            $table->unsignedBigInteger('clientes_id')->nullable();
+            $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

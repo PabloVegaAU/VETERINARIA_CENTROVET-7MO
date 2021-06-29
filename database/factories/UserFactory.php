@@ -24,9 +24,18 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $dt = $this->faker->dateTimeBetween($startDate = '-60 years', $endDate = '-18 years');
+        $date = $dt->format("Y-m-d"); // 1994-09-24
         return [
             'name' => $this->faker->name(),
+            'apellido' => $this->faker->lastName,
+            'dni' => $this->faker->randomNumber(8),
             'email' => $this->faker->unique()->safeEmail(),
+            'celular'=> $this->faker->randomNumber(9),
+            'fecha_nac' => $date,
+            'edad' => $this->faker->randomNumber(2),
+            'sexo' => $this->faker->randomElement(["m","f"]),
+            'domicilio' => $this->faker->lastName,
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

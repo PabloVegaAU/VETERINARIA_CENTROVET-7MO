@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\Clientes;
 use App\Models\Mascotas;
 use Illuminate\Http\Request;
@@ -26,9 +25,10 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $mascotas = Mascotas::all();
+        return view('admin.clientes.create', compact('mascotas'));
     }
 
     /**
@@ -39,7 +39,26 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:100',
+            'apellido' => 'required|max:100',
+            'celular' => 'required|digits:9',
+            'dni' => 'required|digits:8|integer|unique:clientes',
+            'email' => 'required|email|max:100|unique:clientes',
+            'edad' => 'required|max:3',
+            'sexo' => 'required|max:100',
+            'fecha_nac' => 'required',
+            'domicilio' => 'required|max:100',
+            'mascotas'=>'required'
+        ]);
+
+        $cliente = Clientes::Create($request->all());
+        foreach ($request->mascotas as $mid) {
+            $mascotaM =Mascotas::Find($mid);
+            $mascotaM->update(['clientes_id'=>$cliente->id]);
+        }
+
+        return redirect()->route('admin.clientes.index');
     }
 
     /**
@@ -59,9 +78,9 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit($clientes)
     {
-
+        $clientes = Clientes::Find($clientes);
         $mascotas = Mascotas::all();
         return view('admin.clientes.edit', compact('clientes','mascotas'));
     }
@@ -73,9 +92,28 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, $clientes)
     {
-        //
+        $clienteD = Clientes::Find($clientes);
+
+            $leve=[
+                'email' =>'required|string|email|max:100',
+                'celular'=>'required|digits:9|integer',
+                'fecha_nac'=>'required',
+                'edad'=>'required|integer',
+                'sexo'=>'required|string',
+                'domicilio'=>'required|string',
+                'mascotas'=>'required'];
+            $request->validate($leve);
+
+        //actualiza cliente
+        $clienteD->update($request->all());
+        foreach ($request->mascotas as $mid) {
+            $mascotaM =Mascotas::Find($mid);
+            $mascotaM->update(['clientes_id'=>$clienteD->id]);
+        }
+
+        return redirect()->route('admin.clientes.edit',$clienteD);
     }
 
     /**
@@ -84,11 +122,10 @@ class ClientesController extends Controller
      * @param  \App\Models\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clientes $clientes)
+    public function destroy($clientes)
     {
         $cliente = Clientes::Find($clientes);
-        return response()->json($cliente);
-        /* $cliente->delete();
-        return redirect()->route('admin.clientes.index'); */
+        $cliente->delete();
+        return redirect()->route('admin.clientes.index');
     }
 }

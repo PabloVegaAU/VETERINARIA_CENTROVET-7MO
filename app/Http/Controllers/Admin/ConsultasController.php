@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Consultas;
 use Illuminate\Http\Request;
-use App\Models\Vacunas;
-class VacunasController extends Controller
+
+class ConsultasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class VacunasController extends Controller
      */
     public function index()
     {
-        $vacunas = Vacunas::all();
-        return view('admin.vacunas.index',compact('vacunas'));
+        $consultas = Consultas::all();
+        return view('admin.consultas.index',compact('consultas'));
     }
 
     /**
@@ -42,10 +43,10 @@ class VacunasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Consultas $consultas)
     {
         //
     }
@@ -53,47 +54,47 @@ class VacunasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($consultas)
     {
-        $vacunas = Vacunas::Find($id);
-        return view('admin.vacunas.edit', compact('vacunas'));
+        $consulta = Consultas::Find($consultas);
+        return view('admin.consultas.edit', compact('consulta'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$consultas)
     {
-        $vacunaD = Vacunas::Find($id);
+        $consultaD = Consultas::Find($consultas);
             $leve=[
-                'vacuna'=>'required|max:30|string',
-                'fechaprogramada'=>'required|date',
-                'fechaaplicada'=>'required|date'];
+                'fecha'=>'required|date',
+                'sintomas'=>'required|string',
+                'diagnostico'=>'required|string'];
             $request->validate($leve);
 
         //actualiza solo el modelo user
-        $vacunaD->update($request->all());
+        $consultaD->update($request->all());
 
-        return redirect()->route('admin.vacunas.edit',$vacunaD);
+        return redirect()->route('admin.consultas.edit',$consultaD);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($consultas)
     {
-        $vacunaD = Vacunas::Find($id);
-        $vacunaD->delete();
-        return redirect()->route('admin.users.index')->with('msg','La vacuna ha sido eliminado correctamente');
+        $consultaD = Consultas::Find($consultas);
+        $consultaD->delete();
+        return redirect()->route('admin.consultas.index');
     }
 }

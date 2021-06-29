@@ -11,10 +11,12 @@ class Mascotas extends Model
 {
     use HasFactory;
 
-    //UNA Clientes PERTENECE  A MUCHOS mascotas
-    public function clientes()
+    protected $guarded = [];
+
+    //VARIAS MASCOTAS PERTENECEN A UN CLIENTE
+        public function clientes()
     {
-        return $this->belongsToMany(Clientes::class);
+        return $this->belongsTo(Clientes::class);
     }
 
 }

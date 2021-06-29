@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Mascotas;
 
-class Vacunas extends Model
+class Consultas extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    //VARIAS VACUNAS PERTENECEN A UNA MASCOTA
-    public function mascotas()
+     //VARIAS CONSULTAS PERTENECEN A UNA MASCOTA
+     public function mascotas()
     {
         return $this->belongsTo(Mascotas::class);
     }

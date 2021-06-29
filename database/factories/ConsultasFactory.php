@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Vacunas;
+use App\Models\Consultas;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class VacunasFactory extends Factory
+class ConsultasFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Vacunas::class;
+    protected $model = Consultas::class;
 
     /**
      * Define the model's default state.
@@ -24,9 +24,9 @@ class VacunasFactory extends Factory
         $dt = $this->faker->dateTimeBetween($startDate = '-3 days', $endDate = 'now');
         $date = $dt->format("Y-m-d"); // 1994-09-24
         return [
-            'vacuna' => $this->faker->lastName,
-            'fechaprogramada'  => $date,
-            'fechaaplicada' => $date
+            'fecha' => $date,
+            'sintomas' => $this->faker->lastName,
+            'diagnostico' => $this->faker->lastName
         ];
     }
 }

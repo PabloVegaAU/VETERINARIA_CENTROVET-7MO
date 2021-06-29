@@ -4,46 +4,46 @@
 
 @section('content_header')
 <h1>Menu de Clientes </h1>
-<a href="{{ route('admin.users.create') }}" class="btn btn-success">Nuevo Cliente </a>
+<a href="{{ route('admin.clientes.create') }}" class="btn btn-success">Nuevo Cliente </a>
 @stop
 
 @section('content')
 <div class="card">
-    <div class="card-body">
+    <div class="card-body table-responsive">
         <table id="usuarios" class="table table-striped table-bordered" style="width:100%">
-
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Cliente</th>
                     <th>DNI</th>
+                    <th>Correo Electronico</th>
                     <th>Celular</th>
                     <th>Domicilio</th>
-                    {{-- <th style="width:2px;text-align:center">Acciones</th> --}}
+                    <th>Mascotas</th>
+                    <th style="width:2px;text-align:center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($cliente as $clientes)
                 <tr>
-                    <td>{{$clientes->id}}</td>
-                    <td>{{$clientes->nombre}}</td>
-                    <td>{{$clientes->apellido}}</td>
+                    <td>{{$clientes->nombre}} {{$clientes->apellido}}</td>
                     <td>{{$clientes->dni}}</td>
+                    <td>{{$clientes->email}}</td>
                     <td>{{$clientes->celular}}</td>
                     <td>{{$clientes->domicilio}}</td>
-                    {{-- <td style="display:flex ">
-
-                        <a href="{{ route('admin.users.edit', $clientes) }}" class="btn btn-success">Editar</a>
-                        <form action="{{ route('admin.users.destroy', $clientes->id) }}" method="post">
+                    <td>
+                        @foreach ($clientes->mascotas as $mascotas)
+                        <strong>*</strong> {{$mascotas->nombre}}<br>
+                        @endforeach
+                    </td>
+                    <td align="center">
+                        <a href="{{ route('admin.clientes.edit', $clientes) }}" class="btn btn-success">Editar</a><br>
+                        <form action="{{ route('admin.clientes.destroy', $clientes->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Eliminar" class="btn btn-danger"
                                 style="margin: 0px 0px 0px 5px;">
                         </form>
-
-
-                    </td> --}}
+                    </td>
                 </tr>
                 @endforeach
 
@@ -61,9 +61,6 @@
 @stop
 
 @section('js')
-<script>
-    console.log('Hola!');
-</script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>

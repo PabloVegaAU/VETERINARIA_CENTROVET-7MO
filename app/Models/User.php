@@ -27,8 +27,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'apellido',
         'email',
-        'password',
+        'celular',
+        'dni',
+        'fecha_nac',
+        'edad',
+        'sexo',
+        'domicilio',
+        'password'
     ];
 
     /**
@@ -60,10 +67,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-    //un usuario le pertence a un solo cliente
-    public function clientes()
-    {
-        return $this->hasOne(clientes::class);
-    }
 }

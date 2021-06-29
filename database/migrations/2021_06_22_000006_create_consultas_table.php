@@ -15,10 +15,13 @@ class CreateConsultasTable extends Migration
     {
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_nac');
+            $table->date('fecha');
             $table->string('sintomas',50);
             $table->string('diagnostico',250);
-            $table->unsignedBigInteger('id_mascota');
+
+            $table->unsignedBigInteger('mascotas_id');
+            $table->foreign('mascotas_id')->references('id')->on('mascotas')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

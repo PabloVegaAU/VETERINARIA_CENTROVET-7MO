@@ -3,34 +3,32 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>Menu de Usuarios </h1>
+<h1>Menu Consultas </h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-body table-responsive">
-        <table id="usuarios" class="table table-hover table-bordered" style="width:100%">
+        <table id="vacunas" class="table table-hover table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>DNI</th>
-                    <th>Email</th>
+                    <th>Mascota</th>
+                    <th>Vacuna</th>
+                    <th>Fecha Programada</th>
+                    <th>Fecha Aplicada</th>
                     <th style="width:2px;text-align:center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($consultas as $consulta)
                 <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->apellido}}</td>
-                    <td>{{$user->dni}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{$consulta->mascotas->nombre}}</td>
+                    <td>{{$consulta->fecha}}</td>
+                    <td>{{$consulta->sintomas}}</td>
+                    <td>{{$consulta->diagnostico}}</td>
                     <td style="display:flex ">
-                        <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success">Editar</a>
-                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
+                        <a href="{{ route('admin.consultas.edit', $consulta) }}" class="btn btn-success">Editar</a>
+                        <form action="{{ route('admin.consultas.destroy', $consulta->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Eliminar" class="btn btn-danger"
@@ -49,7 +47,7 @@
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
-    $('#usuarios').DataTable(
+    $('#vacunas').DataTable(
         {
             "responsive":true,
             "auto-with":false,

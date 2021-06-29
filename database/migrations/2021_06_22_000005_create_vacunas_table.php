@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ClientesMascotas extends Migration
+class CreateVacunasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class ClientesMascotas extends Migration
      */
     public function up()
     {
-        Schema::create('clientes_mascotas', function (Blueprint $table) {
-            $table->unsignedBigInteger('clientes_id');
+        Schema::create('vacunas', function (Blueprint $table) {
+            $table->id();
+            $table->string('vacuna',50);
+            $table->date('fechaprogramada');
+            $table->date('fechaaplicada');
+
             $table->unsignedBigInteger('mascotas_id');
-
-            $table->primary(["clientes_id", "mascotas_id"]);
-
-            $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->foreign('mascotas_id')->references('id')->on('mascotas')->onDelete('cascade');
 
             $table->timestamps();
@@ -33,6 +33,6 @@ class ClientesMascotas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes_mascotas');
+        Schema::dropIfExists('vacuna');
     }
 }

@@ -22,7 +22,10 @@ class MascotasFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->Name,
+            'especie' => $this->faker->lastName,
+            'raza' => $this->faker->lastName,
+            'sexo' => $this->faker->randomElement(["m","h"])
         ];
     }
 }
