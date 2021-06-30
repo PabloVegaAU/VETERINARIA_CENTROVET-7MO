@@ -3,7 +3,7 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>Editar a {{$user->name}}</h1>
+<h1>EDITAR USUARIO: {{$user->name}}</h1>
 
 @stop
 
@@ -68,15 +68,5 @@
         {!! Form::submit("Actualizar", ['class' => 'btn btn-warning']) !!}
     </div>
     {!! Form::close() !!}
-
-    @stop
-
-    @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    @stop
-
-    @section('js')
-    <script>
-        console.log('Hola!');
-    </script>
-    @stop
+</div>
+@stop

@@ -13,6 +13,13 @@ class Consultas extends Model
 
     protected $guarded = [];
 
+    public $fillable = [
+        'fecha',
+        'sintomas',
+        'diagnosticos',
+        'mascotas_id'
+    ];
+
      //VARIAS CONSULTAS PERTENECEN A UNA MASCOTA
      public function mascotas()
     {

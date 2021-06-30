@@ -48,15 +48,10 @@ class ClientesController extends Controller
             'edad' => 'required|max:3',
             'sexo' => 'required|max:100',
             'fecha_nac' => 'required',
-            'domicilio' => 'required|max:100',
-            'mascotas'=>'required'
+            'domicilio' => 'required|max:100'
         ]);
 
         $cliente = Clientes::Create($request->all());
-        foreach ($request->mascotas as $mid) {
-            $mascotaM =Mascotas::Find($mid);
-            $mascotaM->update(['clientes_id'=>$cliente->id]);
-        }
 
         return redirect()->route('admin.clientes.index');
     }
@@ -102,16 +97,12 @@ class ClientesController extends Controller
                 'fecha_nac'=>'required',
                 'edad'=>'required|integer',
                 'sexo'=>'required|string',
-                'domicilio'=>'required|string',
-                'mascotas'=>'required'];
+                'domicilio'=>'required|string'
+            ];
             $request->validate($leve);
 
         //actualiza cliente
         $clienteD->update($request->all());
-        foreach ($request->mascotas as $mid) {
-            $mascotaM =Mascotas::Find($mid);
-            $mascotaM->update(['clientes_id'=>$clienteD->id]);
-        }
 
         return redirect()->route('admin.clientes.edit',$clienteD);
     }

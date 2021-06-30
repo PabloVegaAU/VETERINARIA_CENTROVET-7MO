@@ -13,6 +13,14 @@ class Mascotas extends Model
 
     protected $guarded = [];
 
+    public $fillable = [
+        'nombre',
+        'especie',
+        'raza',
+        'sexo',
+        'clientes_id'
+    ];
+
     //VARIAS MASCOTAS PERTENECEN A UN CLIENTE
         public function clientes()
     {

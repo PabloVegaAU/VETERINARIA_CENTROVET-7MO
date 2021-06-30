@@ -13,6 +13,13 @@ class Vacunas extends Model
 
     protected $guarded = [];
 
+    public $fillable = [
+        'vacuna',
+        'fechaprogramada',
+        'fechaaplicada',
+        'mascotas_id'
+    ];
+
     //VARIAS VACUNAS PERTENECEN A UNA MASCOTA
     public function mascotas()
     {

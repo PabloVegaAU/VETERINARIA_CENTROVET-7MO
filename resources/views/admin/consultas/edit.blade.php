@@ -3,8 +3,8 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>Editar del Cliente: {{$consulta->mascotas->clientes->nombre}}</h1>
-
+<h1>EDITAR CONSULTA DE: {{$consulta->mascotas->clientes->nombre}}</h1>
+<h1>MASCOTA: {{$consulta->mascotas->nombre}}</h1>
 @stop
 
 @section('content')
@@ -31,11 +31,11 @@
             </div>
             <div class="form-group">
                 {!! Form::label('sintomas', 'Sintomas') !!}
-                {!! Form::text('sintomas', $consulta->sintomas, ['class' => 'form-control']) !!}
+                {!! Form::textarea('sintomas', $consulta->sintomas, ['class' => 'form-control','rows'=>'3']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('diagnostico', 'Diagnostico') !!}
-                {!! Form::text('diagnostico', $consulta->diagnostico, ['class' => 'form-control']) !!}
+                {!! Form::label('diagnosticos', 'Diagnostico') !!}
+                {!! Form::textarea('diagnosticos', $consulta->diagnosticos, ['class' => 'form-control','rows'=>'3']) !!}
             </div>
         </div>
         <div class="form-group" align="center">
@@ -43,4 +43,5 @@
         </div>
         {!! Form::close() !!}
     </div>
-    @stop
+</div>
+@stop

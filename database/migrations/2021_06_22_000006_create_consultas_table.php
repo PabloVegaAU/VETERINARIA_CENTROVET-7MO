@@ -17,9 +17,9 @@ class CreateConsultasTable extends Migration
             $table->id();
             $table->date('fecha');
             $table->string('sintomas',50);
-            $table->string('diagnostico',250);
+            $table->string('diagnosticos',250);
 
-            $table->unsignedBigInteger('mascotas_id');
+            $table->unsignedBigInteger('mascotas_id')->nullable();
             $table->foreign('mascotas_id')->references('id')->on('mascotas')->onDelete('cascade');
 
             $table->timestamps();

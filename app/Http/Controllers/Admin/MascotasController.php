@@ -44,9 +44,14 @@ class MascotasController extends Controller
             'especie' => 'required|max:100',
             'raza' => 'required|max:100',
             'sexo' => 'required|max:100',
+            'clientes' => 'required'
         ]);
 
         $mascotas = Mascotas::Create($request->all());
+        foreach ($request->clientes as $mid) {
+            $mascotaM =Mascotas::Find($mascotas->id);
+            $mascotaM->update(['clientes_id'=>$mid]);
+        }
         return redirect()->route('admin.mascotas.index');
     }
 
@@ -70,7 +75,8 @@ class MascotasController extends Controller
     public function edit($mascota)
     {
         $mascotas = Mascotas::Find($mascota);
-        return view('admin.mascotas.edit', compact('mascotas'));
+        $clientes = Clientes::all();
+        return view('admin.mascotas.edit', compact('mascotas','clientes'));
     }
 
     /**
@@ -88,12 +94,14 @@ class MascotasController extends Controller
                 'nombre'=>'required|string',
                 'especie'=>'required|string',
                 'raza'=>'required|string',
-                'sexo'=>'required|string'];
+                'sexo'=>'required|string',
+                'clientes_id'=>'required'
+            ];
             $request->validate($leve);
 
             //actualiza cliente
-            $mascotaD->update($request->all());
-
+            $mascotaD->update($request->except('clientes_id'));
+            $mascotaD->update(['clientes_id'=>$request->clientes_id]);
             return redirect()->route('admin.mascotas.edit',$mascotaD);
     }
 

@@ -3,13 +3,13 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>Menu de Usuarios </h1>
+<h1>MENÚ DE USUARIOS</h1>
 @stop
 
 @section('content')
 <div class="card">
     <div class="card-body table-responsive">
-        <table id="usuarios" class="table table-hover table-bordered" style="width:100%">
+        <table id="tusuarios" class="table table-hover table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -46,10 +46,8 @@
 @stop
 
 @section('js')
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
 <script>
-    $('#usuarios').DataTable(
+    $('#tusuarios').DataTable(
         {
             "responsive":true,
             "auto-with":false,

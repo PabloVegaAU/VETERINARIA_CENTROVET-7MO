@@ -26,7 +26,7 @@ class ConsultasFactory extends Factory
         return [
             'fecha' => $date,
             'sintomas' => $this->faker->lastName,
-            'diagnostico' => $this->faker->lastName
+            'diagnosticos' => $this->faker->lastName
         ];
     }
 }

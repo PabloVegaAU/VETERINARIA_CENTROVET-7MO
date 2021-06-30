@@ -19,7 +19,7 @@ class CreateVacunasTable extends Migration
             $table->date('fechaprogramada');
             $table->date('fechaaplicada');
 
-            $table->unsignedBigInteger('mascotas_id');
+            $table->unsignedBigInteger('mascotas_id')->nullable();
             $table->foreign('mascotas_id')->references('id')->on('mascotas')->onDelete('cascade');
 
             $table->timestamps();

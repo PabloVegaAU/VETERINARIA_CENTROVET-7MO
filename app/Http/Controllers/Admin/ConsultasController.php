@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Consultas;
 use Illuminate\Http\Request;
+use App\Models\Consultas;
+use App\Models\Mascotas;
 
 class ConsultasController extends Controller
 {
@@ -26,7 +27,8 @@ class ConsultasController extends Controller
      */
     public function create()
     {
-        //
+        $mascotas = Mascotas::all();
+        return view('admin.consultas.create',compact('mascotas'));
     }
 
     /**
@@ -37,7 +39,19 @@ class ConsultasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'fecha' => 'required|date',
+            'sintomas' => 'required|max:100',
+            'diagnosticos' => 'required|max:100',
+            'mascotas' => 'required'
+        ]);
+
+        $consultas = Consultas::Create($request->all());
+        foreach ($request->mascotas as $mid) {
+            $consultasN =Consultas::Find($consultas->id);
+            $consultasN->update(['mascotas_id'=>$mid]);
+        }
+        return redirect()->route('admin.consultas.index');
     }
 
     /**
@@ -76,7 +90,7 @@ class ConsultasController extends Controller
             $leve=[
                 'fecha'=>'required|date',
                 'sintomas'=>'required|string',
-                'diagnostico'=>'required|string'];
+                'diagnosticos'=>'required|string'];
             $request->validate($leve);
 
         //actualiza solo el modelo user

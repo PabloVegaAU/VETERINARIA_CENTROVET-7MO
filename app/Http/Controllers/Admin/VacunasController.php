@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vacunas;
+use App\Models\Mascotas;
+
 class VacunasController extends Controller
 {
     /**
@@ -25,7 +27,8 @@ class VacunasController extends Controller
      */
     public function create()
     {
-        //
+        $mascotas = Mascotas::all();
+        return view('admin.vacunas.create',compact('mascotas'));
     }
 
     /**
@@ -36,7 +39,19 @@ class VacunasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'vacuna' => 'required|max:100',
+            'fechaprogramada' => 'required|date',
+            'fechaaplicada' => 'required|date',
+            'mascotas' => 'required'
+        ]);
+
+        $vacunas = Vacunas::Create($request->all());
+        foreach ($request->mascotas as $mid) {
+            $vacunasN =Vacunas::Find($vacunas->id);
+            $vacunasN->update(['mascotas_id'=>$mid]);
+        }
+        return redirect()->route('admin.vacunas.index');
     }
 
     /**
@@ -94,6 +109,6 @@ class VacunasController extends Controller
     {
         $vacunaD = Vacunas::Find($id);
         $vacunaD->delete();
-        return redirect()->route('admin.users.index')->with('msg','La vacuna ha sido eliminado correctamente');
+        return redirect()->route('admin.vacunas.index');
     }
 }
