@@ -41,18 +41,22 @@
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('clientes', 'Dueños') !!}
+            {!! Form::label('clientes', 'Cliente') !!}
             <table id="clientes" class="table table-hover table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Seleccionar Mascota</th>
+                        <th>Nombres y apellidos</th>
+                        <th>N° DNI</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($clientes as $cliente)
                     <tr>
                         <td>{!! Form::radio('clientes[]', $cliente->id, null, ['class' => 'mr-1']) !!}
-                            {{$cliente->nombre}}
+                            {{$cliente->nombre}} {{$cliente->apellido}}
+                        </td>
+                        <td>
+                            {{$cliente->dni}}
                         </td>
                     </tr>
                     @endforeach

@@ -26,7 +26,7 @@ class ClientesFactory extends Factory
         $date = $dt->format("Y-m-d"); // 1994-09-24
 
         return [
-            'nombre' => $this->faker->lastName,
+            'nombre' => $this->faker->name(),
             'apellido' => $this->faker->lastName,
             'dni' => $this->faker->randomNumber(8),
             'email' => $this->faker->unique()->safeEmail(),

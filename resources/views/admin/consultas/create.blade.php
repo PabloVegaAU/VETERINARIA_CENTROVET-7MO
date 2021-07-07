@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('sintomas', 'Sintomas') !!}
-                {!! Form::textarea('sintomas', null, ['class' => 'form-control','rows'=>'3']]) !!}
+                {!! Form::textarea('sintomas', null, ['class' => 'form-control','rows'=>'3']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('diagnosticos', 'Diagnostico') !!}
@@ -39,7 +39,8 @@
             <table id="tmascotas" class="table table-hover table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Seleccionar Mascota</th>
+                        <th>Mascota</th>
+                        <th>Dueño</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,13 +49,16 @@
                         <td>{!! Form::radio('mascotas[]', $mascota->id, null, ['class' => 'mr-1']) !!}
                             {{$mascota->nombre}}
                         </td>
+                        <td>
+                            {{$mascota->clientes->nombre}} {{$mascota->clientes->apellido}}
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
         <div class="form-group" align="center">
-            {!! Form::submit("Actualizar", ['class' => 'btn btn-warning']) !!}
+            {!! Form::submit("Crear nueva consulta", ['class' => 'btn btn-warning']) !!}
         </div>
         {!! Form::close() !!}
     </div>

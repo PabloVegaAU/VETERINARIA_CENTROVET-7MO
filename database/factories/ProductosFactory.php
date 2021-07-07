@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Mascotas;
+use App\Models\Productos;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MascotasFactory extends Factory
+class ProductosFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Mascotas::class;
+    protected $model = Productos::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +23,9 @@ class MascotasFactory extends Factory
     {
         return [
             'nombre' => $this->faker->name(),
-            'especie' => $this->faker->lastName,
-            'raza' => $this->faker->lastName,
-            'sexo' => $this->faker->randomElement(["m","h"])
+            'descripcion' => $this->faker->lastName,
+            'precio'=> $this->faker->randomFloat(2, 0, 1000),
+            'cantidad'=> $this->faker->randomNumber(2)
         ];
     }
 }

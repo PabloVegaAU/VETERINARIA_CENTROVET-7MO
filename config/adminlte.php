@@ -316,23 +316,18 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],*/
+        ['header' => 'PRODUCTOS Y CONTACTOS'],
+        [
+            'text'       => 'Productos',
+            'route'  => 'admin.productos.index',
+            'icon_color' => 'red',
+        ],
+        [
+            'text'       => 'Contactos',
+            'route'  => 'admin.contactos.index',
+            'icon_color' => 'yellow',
+        ]
     ],
 
     /*

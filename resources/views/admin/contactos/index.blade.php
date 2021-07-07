@@ -3,36 +3,37 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>MENÚ DE VACUNAS</h1>
+<h1>MENÚ DE CONTACTOS </h1>
 @stop
 
 @section('content')
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('admin.vacunas.create') }}" class="btn btn-success">AÑADIR VACUNA</a>
+            <a href="{{ route('admin.contactos.create') }}" class="btn btn-success">AÑADIR CONTACTO</a>
         </div>
         <div class="card-body table-responsive">
-            <table id="vacunas" class="table table-hover table-bordered" style="width:100%">
+            <table id="contactos" class="table table-hover table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Mascota</th>
-                        <th>Vacuna</th>
-                        <th>Fecha Programada</th>
-                        <th>Fecha Aplicada</th>
+                        <th>Nombres y apellidos</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th>Comentario</th>
                         <th style="width:2px;text-align:center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($vacunas as $vacuna)
+                    @foreach ($contactos as $contacto)
                     <tr>
-                        <td>{{$vacuna->mascotas->nombre}}</td>
-                        <td>{{$vacuna->vacuna}}</td>
-                        <td>{{$vacuna->fechaprogramada}}</td>
-                        <td>{{$vacuna->fechaaplicada}}</td>
+                        <td>{{$contacto->nombre}} {{$contacto->apellido}}</td>
+                        <td>{{$contacto->telefono}}</td>
+                        <td>{{$contacto->email}}</td>
+                        <td>{{$contacto->comentario}}</td>
                         <td style="display:flex ">
-                            <a href="{{ route('admin.vacunas.edit', $vacuna) }}" class="btn btn-success">Editar</a>
-                            <form action="{{ route('admin.vacunas.destroy', $vacuna->id) }}" method="post">
+                            <a href="{{ route('admin.contactos.edit', $contacto) }}" class="btn
+                            btn-success">Editar</a>
+                            <form action="{{ route('admin.contactos.destroy', $contacto->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Eliminar" class="btn btn-danger"
@@ -50,7 +51,7 @@
 
 @section('js')
 <script>
-    $('#vacunas').DataTable(
+    $('#contactos').DataTable(
         {
             "responsive":true,
             "auto-with":false,

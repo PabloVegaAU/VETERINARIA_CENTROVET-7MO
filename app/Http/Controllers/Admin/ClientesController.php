@@ -95,7 +95,7 @@ class ClientesController extends Controller
                 'email' =>'required|string|email|max:100',
                 'celular'=>'required|digits:9|integer',
                 'fecha_nac'=>'required',
-                'edad'=>'required|integer',
+                'edad'=>'required|integer|min:18|max:120',
                 'sexo'=>'required|string',
                 'domicilio'=>'required|string'
             ];

@@ -21,10 +21,16 @@
     <div class="card-body">
         {!! Form::model($consulta, ['route' => ['admin.consultas.update', $consulta], 'method' => 'PUT']) !!}
         <div class="form-group">
-            <div class="form-group">
-                {!! Form::label('mascota', 'Nombre de la Mascota') !!}
+            <div class="row">
+            <div class="form-group col-sm">
+                {!! Form::label('mascota', 'Mascota') !!}
                 {!! Form::text('mascota', $consulta->mascotas->nombre, ['class' => 'form-control','disabled']) !!}
             </div>
+            <div class="form-group col-sm">
+                {!! Form::label('cliente', 'Dueño') !!}
+                {!! Form::text('cliente', $consulta->mascotas->clientes->nombre." ".$consulta->mascotas->clientes->apellido, ['class' => 'form-control','disabled']) !!}
+            </div>
+        </div>
             <div class="form-group">
                 {!! Form::label('fechap', 'Fecha de la Consulta') !!}
                 {!! Form::date('fecha', $consulta->fecha, ['class' => 'form-control']) !!}

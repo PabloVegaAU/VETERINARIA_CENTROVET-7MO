@@ -22,9 +22,16 @@
         {!! Form::model($vacunas, ['route' => ['admin.vacunas.update', $vacunas], 'method' => 'PUT']) !!}
 
         <div class="form-group">
-            <div class="form-group">
-                {!! Form::label('mascota', 'Nombre de la Mascota') !!}
-                {!! Form::text('mascota', $vacunas->mascotas->nombre, ['class' => 'form-control','disabled']) !!}
+            <div class="row">
+                <div class="form-group col-sm">
+                    {!! Form::label('mascota', 'Mascota') !!}
+                    {!! Form::text('mascota', $vacunas->mascotas->nombre, ['class' => 'form-control','disabled']) !!}
+                </div>
+                <div class="form-group col-sm">
+                    {!! Form::label('cliente', 'Dueño') !!}
+                    {!! Form::text('cliente', $vacunas->mascotas->clientes->nombre."
+                    ".$vacunas->mascotas->clientes->apellido, ['class' => 'form-control','disabled']) !!}
+                </div>
             </div>
             <div class="form-group">
                 {!! Form::label('vacuna', 'Nombre de la Vacuna') !!}
@@ -44,4 +51,5 @@
         </div>
         {!! Form::close() !!}
     </div>
- @stop
+</div>
+@stop
