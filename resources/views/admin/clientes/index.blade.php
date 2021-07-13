@@ -9,9 +9,11 @@
 @section('content')
 <div class="container">
     <div class="card">
+        @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
         <div class="card-header">
             <a href="{{ route('admin.clientes.create') }}" class="btn btn-success">AÑADIR CLIENTE</a>
         </div>
+        @endif
         <div class="card">
             <div class="card-body table-responsive">
                 <table id="tclientes" class="table table-hover table-bordered" style="width:100%">
@@ -23,7 +25,9 @@
                             <th>Celular</th>
                             <th>Domicilio</th>
                             <th>Mascotas</th>
+                            @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                             <th style="width:2px;text-align:center">Acciones</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -39,9 +43,10 @@
                                 <strong>*</strong> {{$mascotas->nombre}}<br>
                                 @endforeach
                             </td>
+                            @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                             <td align="center">
                                 <a href="{{ route('admin.clientes.edit', $clientes) }}"
-                                    class="btn btn-success">Editar</a><br>
+                                    class="btn btn-success">Editar</a>
                                 <form action="{{ route('admin.clientes.destroy', $clientes->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -49,6 +54,7 @@
                                         style="margin: 0px 0px 0px 5px;">
                                 </form>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
 

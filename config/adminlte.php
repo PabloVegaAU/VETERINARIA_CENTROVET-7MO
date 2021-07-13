@@ -253,12 +253,12 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],*/
-        ['header' => 'GESTIONAR'],
         [
             'text' => 'Usuarios',
             'route'  => 'admin.users.index',
             'icon' => 'fas fa-fw fa-user',
         ],
+        ['header' => 'GESTIONAR'],
         [
             'text' => 'Clientes',
             'route'  => 'admin.clientes.index',
@@ -278,6 +278,11 @@ return [
             'text' => 'Vacunas',
             'route'  => 'admin.vacunas.index',
             'icon' => 'fas fa-fw fa-syringe',
+        ],
+        [
+            'text' => 'Reservaciones',
+            'route'  => 'admin.reservaciones.index',
+            'icon' => 'fas fa-fw fa-clipboard',
         ],
         /*[
             'text'    => 'multilevel',
@@ -317,17 +322,17 @@ return [
                 ],
             ],
         ],*/
-        ['header' => 'PRODUCTOS Y CONTACTOS'],
+        ['header' => 'OTROS'],
         [
             'text'       => 'Productos',
             'route'  => 'admin.productos.index',
             'icon_color' => 'red',
         ],
-        [
+        /* [
             'text'       => 'Contactos',
             'route'  => 'admin.contactos.index',
             'icon_color' => 'yellow',
-        ]
+        ] */
     ],
 
     /*

@@ -32,12 +32,14 @@
                         <td>{{$vacuna->fechaaplicada}}</td>
                         <td style="display:flex ">
                             <a href="{{ route('admin.vacunas.edit', $vacuna) }}" class="btn btn-success">Editar</a>
+                            @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                             <form action="{{ route('admin.vacunas.destroy', $vacuna->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Eliminar" class="btn btn-danger"
                                     style="margin: 0px 0px 0px 5px;">
                             </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

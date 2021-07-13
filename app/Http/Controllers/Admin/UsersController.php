@@ -83,8 +83,9 @@ class UsersController extends Controller
             $leve=[
                 'email' =>'required|string|email|max:100',
                 'celular'=>'required|digits:9|integer',
+                'tipo'=>'required',
                 'fecha_nac'=>'required',
-                'edad'=>'required|digits:3|integer|max:150',
+                'edad'=>'required|integer|max:125|min:18',
                 'sexo'=>'required|string',
                 'domicilio'=>'required|string'];
             $request->validate($leve);

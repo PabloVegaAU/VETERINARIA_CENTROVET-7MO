@@ -10,6 +10,7 @@ use App\Models\Vacunas;
 use App\Models\Consultas;
 use App\Models\Productos;
 use App\Models\Contactos;
+use App\Models\Reservaciones;
 use DateTime;
 class DefaultAdminSeeder extends Seeder
 {
@@ -54,6 +55,12 @@ class DefaultAdminSeeder extends Seeder
             "mascotas_id" =>$mascotas->id
                 ]);
         }
+
+        //Crear 8 Mascotas
+        foreach ($clientes as $cliente) {
+            
+        }
+
         //Crear 8 Productos
         $productos = Productos::factory(8)->create();
 

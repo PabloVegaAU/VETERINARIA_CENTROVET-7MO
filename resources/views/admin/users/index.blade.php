@@ -17,7 +17,10 @@
                     <th>Apellido</th>
                     <th>DNI</th>
                     <th>Email</th>
+                    <th>Tipo</th>
+                    @if ( Auth::user()->tipo == "ADMIN")
                     <th style="width:2px;text-align:center">Acciones</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +31,8 @@
                     <td>{{$user->apellido}}</td>
                     <td>{{$user->dni}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->tipo}}</td>
+                    @if ( Auth::user()->tipo == "ADMIN")
                     <td style="display:flex ">
                         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success">Editar</a>
                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
@@ -37,6 +42,7 @@
                                 style="margin: 0px 0px 0px 5px;">
                         </form>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

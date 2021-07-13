@@ -34,12 +34,14 @@
                             <td style="display:flex ">
                                 <a href="{{ route('admin.consultas.edit', $consulta) }}"
                                     class="btn btn-success">Editar</a>
+                                @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                                 <form action="{{ route('admin.consultas.destroy', $consulta->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Eliminar" class="btn btn-danger"
                                         style="margin: 0px 0px 0px 5px;">
                                 </form>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

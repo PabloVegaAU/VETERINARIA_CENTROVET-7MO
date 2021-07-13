@@ -9,9 +9,11 @@
 @section('content')
 <div class="container">
     <div class="card">
+        @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
         <div class="card-header">
             <a href="{{ route('admin.mascotas.create') }}" class="btn btn-success">AÑADIR MASCOTA</a>
         </div>
+        @endif
         <div class="card-body table-responsive">
             <table id="mascotas" class="table table-hover table-bordered" style="width:100%">
                 <thead>
@@ -21,7 +23,9 @@
                         <th>Raza</th>
                         <th>Sexo</th>
                         <th>Dueño</th>
+                        @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                         <th style="width:2px;text-align:center">Acciones</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +48,7 @@
                             Sin dueño
                             @endif
                         </td>
+                        @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                         <td style="display:flex">
                             <a href="{{ route('admin.mascotas.edit', $mascota) }}"
                                 class="btn btn-success col-sm">Editar</a>
@@ -54,6 +59,7 @@
                                     style="margin: 0px 0px 0px 5px;">
                             </form>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
 

@@ -43,6 +43,12 @@
                 {!! Form::label('celular', 'N° de Celular') !!}
                 {!! Form::text('celular', $user->celular, ['class' => 'form-control']) !!}
             </div>
+            <div class="form-group col-sm">
+                {!! Form::label('tipo', 'Tipo') !!}
+                {!!
+                Form::select('tipo',array('ADMIN'=>'ADMIN','VETERINARIO'=>'VETERINARIO','RECEPCIONISTA'=>'RECEPCIONISTA'),
+                $user->tipo, ['class' =>'form-control']) !!}
+            </div>
         </div>
         <div class="row">
             <div class="form-group col-sm">

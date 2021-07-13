@@ -9,9 +9,11 @@
 @section('content')
 <div class="container">
     <div class="card">
+        @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
         <div class="card-header">
             <a href="{{ route('admin.productos.create') }}" class="btn btn-success">AÑADIR PRODUCTO</a>
         </div>
+        @endif
         <div class="card">
             <div class="card-body table-responsive">
                 <table id="tclientes" class="table table-hover table-bordered" style="width:100%">
@@ -34,12 +36,14 @@
                             <td style="display:flex ">
                                 <a href="{{ route('admin.productos.edit', $producto) }}" class="btn
                                 btn-success">Editar</a>
+                                @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                                 <form action="{{ route('admin.productos.destroy', $producto->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Eliminar" class="btn btn-danger"
                                         style="margin: 0px 0px 0px 5px;">
                                 </form>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

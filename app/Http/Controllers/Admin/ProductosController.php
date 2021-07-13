@@ -78,9 +78,21 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request, $productos)
     {
-        //
+        $productoM = Productos::Find($productos);
+
+        $request->validate([
+            'nombre' => 'required|string|max:100',
+            'descripcion' => 'required|string|max:100',
+            'precio' => 'required|numeric|between:0.01,9999.99',
+            'cantidad' => 'required|integer|digits_between:1,7'
+        ]);
+
+        //actualiza cliente
+        $productoM->update($request->all());
+
+        return redirect()->route('admin.productos.edit',$productoM);
     }
 
     /**
@@ -89,8 +101,10 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Productos $productos)
+    public function destroy($productos)
     {
-        //
+        $productoD = Productos::Find($productos);
+        $productoD->delete();
+        return redirect()->route('admin.productos.index');
     }
 }

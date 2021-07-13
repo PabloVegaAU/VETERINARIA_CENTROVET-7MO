@@ -27,17 +27,25 @@
             </div>
             <div class="form-group">
                 {!! Form::label('descripcion', 'Descripción') !!}
-                {!! Form::text('descripcion', $producto->descripcion, ['class' => 'form-control','placeholder'=>'Descripción']) !!}
+                {!! Form::textarea('descripcion', $producto->descripcion, ['class' =>
+                'form-control','rows'=>'3','placeholder'=>'Descripción']) !!}
             </div>
-            <div class="form-group">
-                {!! Form::label('precio', 'Precio') !!}
-                {!! Form::number('precio', $producto->precio, ['class' => 'form-control','step'=>'any','placeholder'=>'Precio'])
-                !!}
-            </div>
-            <div class="form-group">
-                {!! Form::label('cantidad', 'Cantidad') !!}
-                {!! Form::number('cantidad', $producto->cantidad, ['type'=>'email','class'=>'form-control','placeholder'=>'Cantidad'])
-                !!}
+            <div class="row">
+                <div class="form-group col-sm">
+                    {!! Form::label('precio', 'Precio') !!}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">S/.</span>
+                        {!! Form::number('precio', $producto->precio, ['class' =>
+                        'form-control','step'=>'any','placeholder'=>'Precio'])
+                        !!}
+                    </div>
+                </div>
+                <div class="form-group col-sm">
+                    {!! Form::label('cantidad', 'Cantidad') !!}
+                    {!! Form::number('cantidad', $producto->cantidad,
+                    ['type'=>'email','class'=>'form-control','placeholder'=>'Cantidad'])
+                    !!}
+                </div>
             </div>
         </div>
         <div class="form-group" align="center">

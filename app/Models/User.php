@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Clientes;
+use App\Models\Reservaciones;
 
 class User extends Authenticatable
 {
@@ -30,6 +31,7 @@ class User extends Authenticatable
         'apellido',
         'email',
         'celular',
+        'tipo',
         'dni',
         'fecha_nac',
         'edad',
@@ -67,4 +69,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+     #UN USER PUEDE TENER VARIAS RESERVACIONES
+        public function reservaciones()
+    {
+        return $this->hasMany(Reservaciones::class);
+    }
 }
