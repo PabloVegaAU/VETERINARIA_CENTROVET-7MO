@@ -8,6 +8,11 @@
 
 @section('content')
 <div class="card">
+    @if ( Auth::user()->tipo == "ADMIN")
+    <div class="card-header">
+        <a href="{{ route('admin.users.create') }}" class="btn btn-success">AÑADIR USUARIO</a>
+    </div>
+    @endif
     <div class="card-body table-responsive">
         <table id="tusuarios" class="table table-hover table-bordered" style="width:100%">
             <thead>
@@ -32,15 +37,18 @@
                     <td>{{$user->dni}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->tipo}}</td>
+
                     @if ( Auth::user()->tipo == "ADMIN")
                     <td style="display:flex ">
                         <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success">Editar</a>
+                        @if ($user->id != Auth::user()->id)
                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="Eliminar" class="btn btn-danger"
                                 style="margin: 0px 0px 0px 5px;">
                         </form>
+                        @endif
                     </td>
                     @endif
                 </tr>

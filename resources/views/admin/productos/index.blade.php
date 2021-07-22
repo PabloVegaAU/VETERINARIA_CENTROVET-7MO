@@ -9,7 +9,7 @@
 @section('content')
 <div class="container">
     <div class="card">
-        @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
+        @if ( Auth::user()->tipo == "ADMIN")
         <div class="card-header">
             <a href="{{ route('admin.productos.create') }}" class="btn btn-success">AÑADIR PRODUCTO</a>
         </div>
@@ -23,7 +23,9 @@
                             <th>Descripción</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
+                            @if ( Auth::user()->tipo == "ADMIN")
                             <th style="width:2px;text-align:center">Acciones</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -33,18 +35,18 @@
                             <td>{{$producto->descripcion}}</td>
                             <td>{{$producto->precio}}</td>
                             <td>{{$producto->cantidad}}</td>
+                            @if ( Auth::user()->tipo == "ADMIN")
                             <td style="display:flex ">
                                 <a href="{{ route('admin.productos.edit', $producto) }}" class="btn
                                 btn-success">Editar</a>
-                                @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                                 <form action="{{ route('admin.productos.destroy', $producto->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Eliminar" class="btn btn-danger"
                                         style="margin: 0px 0px 0px 5px;">
                                 </form>
-                                @endif
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

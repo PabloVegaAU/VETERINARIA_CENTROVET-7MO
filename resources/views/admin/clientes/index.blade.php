@@ -47,12 +47,15 @@
                             <td align="center">
                                 <a href="{{ route('admin.clientes.edit', $clientes) }}"
                                     class="btn btn-success">Editar</a>
+
+                                @if ( Auth::user()->tipo == "ADMIN")
                                 <form action="{{ route('admin.clientes.destroy', $clientes->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" value="Eliminar" class="btn btn-danger"
                                         style="margin: 0px 0px 0px 5px;">
                                 </form>
+                                @endif
                             </td>
                             @endif
                         </tr>

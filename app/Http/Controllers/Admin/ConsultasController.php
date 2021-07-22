@@ -96,7 +96,7 @@ class ConsultasController extends Controller
         //actualiza solo el modelo user
         $consultaD->update($request->all());
 
-        return redirect()->route('admin.consultas.edit',$consultaD);
+        return redirect()->route('admin.consultas.index');
     }
 
     /**

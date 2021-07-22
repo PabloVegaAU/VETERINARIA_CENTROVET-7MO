@@ -46,7 +46,7 @@ class ReservacionesController extends Controller
             'hora' => 'required',
             'comentario' => 'required|string|max:100',
             'clientes' => 'required',
-            'usuarios' => 'required',
+            'users_id' => 'required',
         ]);
 
         $reservacion = Reservaciones::Create($request->all());
@@ -54,10 +54,6 @@ class ReservacionesController extends Controller
         foreach ($request->clientes as $mid) {
             $reservacionM =Reservaciones::Find($reservacion->id);
             $reservacionM->update(['clientes_id'=>$mid]);
-        }
-        foreach ($request->usuarios as $mid) {
-            $reservacionM =Reservaciones::Find($reservacion->id);
-            $reservacionM->update(['usuarios_id'=>$mid]);
         }
 
         return redirect()->route('admin.reservaciones.index');
@@ -120,8 +116,10 @@ class ReservacionesController extends Controller
      * @param  \App\Models\Reservaciones  $reservaciones
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservaciones $reservaciones)
+    public function destroy($reservaciones)
     {
-        //
+        $reservacionD = Reservaciones::Find($reservaciones);
+        $reservacionD->delete();
+        return redirect()->route('admin.reservaciones.index');
     }
 }

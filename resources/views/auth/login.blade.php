@@ -34,11 +34,11 @@
                 </label>
             </div>
 
-            <div class="flex items-center mt-4">
+            {{-- <div class="flex items-center mt-4">
                 @if (Route::has('register'))
                 <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Crear Nueva Cuenta</a>
                 @endif
-            </div>
+            </div> --}}
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))

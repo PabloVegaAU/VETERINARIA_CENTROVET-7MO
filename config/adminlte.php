@@ -225,34 +225,16 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
-        /* [
-            'type'         => 'navbar-search',
-            'text'         => 'Buscar',
-            'topnav_right' => true,
-        ], */
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-        /* [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar',
-        ], */
-        /*[
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+        [
+            'text' => 'User',
+            'route'  => 'profile.show',
+            'icon' => 'fas fa-fw fa-user',
+            'topnav_right' => true,
         ],
-       [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],*/
         [
             'text' => 'Usuarios',
             'route'  => 'admin.users.index',
@@ -284,55 +266,12 @@ return [
             'route'  => 'admin.reservaciones.index',
             'icon' => 'fas fa-fw fa-clipboard',
         ],
-        /*[
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],*/
         ['header' => 'OTROS'],
         [
             'text'       => 'Productos',
             'route'  => 'admin.productos.index',
             'icon_color' => 'red',
         ],
-        /* [
-            'text'       => 'Contactos',
-            'route'  => 'admin.contactos.index',
-            'icon_color' => 'yellow',
-        ] */
     ],
 
     /*

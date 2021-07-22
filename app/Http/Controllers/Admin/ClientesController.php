@@ -47,7 +47,7 @@ class ClientesController extends Controller
             'email' => 'required|email|max:100|unique:clientes',
             'edad' => 'required|max:3',
             'sexo' => 'required|max:100',
-            'fecha_nac' => 'required',
+            'fecha_nac' => 'required|date',
             'domicilio' => 'required|max:100'
         ]);
 
@@ -92,9 +92,8 @@ class ClientesController extends Controller
         $clienteD = Clientes::Find($clientes);
 
             $leve=[
-                'email' =>'required|string|email|max:100',
                 'celular'=>'required|digits:9|integer',
-                'fecha_nac'=>'required',
+                'fecha_nac' => 'required|date',
                 'edad'=>'required|integer|min:18|max:120',
                 'sexo'=>'required|string',
                 'domicilio'=>'required|string'

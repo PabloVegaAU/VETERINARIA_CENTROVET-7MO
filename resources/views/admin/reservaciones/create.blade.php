@@ -69,12 +69,12 @@
                         @foreach ($usuarios as $user)
                         @if ($user->tipo == "VETERINARIO")
                         <tr>
-                            <td>{!! Form::radio('usuarios[]', $user->id, null, ['class' => 'mr-1']) !!}
+                            <td>
+                                {!! Form::radio('users_id', $user->id, null, ['class' => 'mr-1'])
+                                !!}
                                 {{$user->name}} {{$user->apellido}}
                             </td>
-                            <td>
-                                {{$user->dni}}
-                            </td>
+                            <td>{{$user->dni}}</td>
                         </tr>
                         @endif
                         @endforeach

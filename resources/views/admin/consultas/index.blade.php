@@ -34,7 +34,7 @@
                             <td style="display:flex ">
                                 <a href="{{ route('admin.consultas.edit', $consulta) }}"
                                     class="btn btn-success">Editar</a>
-                                @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
+                                @if ( Auth::user()->tipo == "ADMIN")
                                 <form action="{{ route('admin.consultas.destroy', $consulta->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')

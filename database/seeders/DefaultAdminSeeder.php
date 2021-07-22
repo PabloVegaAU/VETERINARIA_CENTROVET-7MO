@@ -21,16 +21,17 @@ class DefaultAdminSeeder extends Seeder
      */
     public function run()
     {
-        $date = new DateTime("2001-06-12");
+        $date = new DateTime("1998-06-12");
         $admin = User::create([
-            "name" => "Pablo",
+            "name" => "Veterinario",
             "password" => bcrypt("password"),
-            "apellido" => "Vega Valverde",
+            "apellido" => "Veterinario Veterinario",
+            "tipo"=>"ADMIN",
             "dni" => "74741985",
-            "email" => "pablo@gmail.com",
-            "celular" => "980251512",
+            "email" => "Veterinario@Veterinario.com",
+            "celular" => "980254132",
             "fecha_nac" => $date,
-            "edad" => "20",
+            "edad" => "18",
             "sexo" => "M",
             "domicilio"=>"Casa"
             ]);
@@ -58,7 +59,7 @@ class DefaultAdminSeeder extends Seeder
 
         //Crear 8 Mascotas
         foreach ($clientes as $cliente) {
-            
+
         }
 
         //Crear 8 Productos

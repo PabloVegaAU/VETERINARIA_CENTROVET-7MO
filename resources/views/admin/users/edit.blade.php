@@ -22,12 +22,12 @@
         {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method' => 'PUT']) !!}
         <div class="row">
             <div class="form-group col-sm">
-                {!! Form::label('nombre', 'Nombre') !!}
-                {!! Form::text('nombre', $user->name, ['class' => 'form-control','disabled']) !!}
+                {!! Form::label('name', 'Nombre') !!}
+                {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group col-sm">
                 {!! Form::label('apellido', 'Apellidos') !!}
-                {!! Form::text('apellido', $user->apellido, ['class' => 'form-control','disabled']) !!}
+                {!! Form::text('apellido', $user->apellido, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group col-sm">
                 {!! Form::label('dni', 'DNI') !!}
@@ -46,7 +46,7 @@
             <div class="form-group col-sm">
                 {!! Form::label('tipo', 'Tipo') !!}
                 {!!
-                Form::select('tipo',array('ADMIN'=>'ADMIN','VETERINARIO'=>'VETERINARIO','RECEPCIONISTA'=>'RECEPCIONISTA'),
+                Form::select('tipo',array('VETERINARIO'=>'VETERINARIO','RECEPCIONISTA'=>'RECEPCIONISTA'),
                 $user->tipo, ['class' =>'form-control']) !!}
             </div>
         </div>

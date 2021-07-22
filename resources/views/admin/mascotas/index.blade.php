@@ -50,14 +50,18 @@
                         </td>
                         @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
                         <td style="display:flex">
+
                             <a href="{{ route('admin.mascotas.edit', $mascota) }}"
                                 class="btn btn-success col-sm">Editar</a>
+
+                            @if ( Auth::user()->tipo == "ADMIN")
                             <form action="{{ route('admin.mascotas.destroy', $mascota->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="Eliminar" class="btn btn-danger col-sm"
                                     style="margin: 0px 0px 0px 5px;">
                             </form>
+                            @endif
                         </td>
                         @endif
                     </tr>

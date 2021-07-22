@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('edad',3);
             $table->enum('sexo', ['m','f']);
             $table->string('domicilio',100);
-            $table->enum('tipo', ['ADMIN','VETERINARIO','RECEPCIONISTA']);
+            $table->enum('tipo', ['VETERINARIO','RECEPCIONISTA','ADMIN']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

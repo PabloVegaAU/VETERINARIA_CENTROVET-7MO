@@ -96,7 +96,7 @@ class VacunasController extends Controller
         //actualiza solo el modelo user
         $vacunaD->update($request->all());
 
-        return redirect()->route('admin.vacunas.edit',$vacunaD);
+        return redirect()->route('admin.vacunas.index');
     }
 
     /**

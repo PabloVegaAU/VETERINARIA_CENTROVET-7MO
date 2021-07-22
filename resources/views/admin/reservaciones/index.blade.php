@@ -17,20 +17,19 @@
                 <table id="tclientes" class="table table-hover table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
-                            <th>Hora</th>
+                            <th>Fecha/Hora</th>
                             <th>Estado</th>
                             <th>Cliente</th>
                             <th>Contacto</th>
                             <th>Veterinario</th>
+                            <th>Comentario</th>
                             <th style="width:2px;text-align:center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($reservaciones as $reservacion)
                         <tr>
-                            <td>{{$reservacion->fecha}}</td>
-                            <td>{{$reservacion->hora}}</td>
+                            <td>{{$reservacion->fecha}}<br> {{$reservacion->hora}}</td>
                             <td>@switch($reservacion->estado)
                                 @case(0)
                                 RESERVADO
@@ -48,10 +47,11 @@
                             <td>{{$reservacion->clientes->nombre}}<br>{{$reservacion->clientes->apellido}}</td>
                             <td>{{$reservacion->clientes->email}}<br>{{$reservacion->clientes->celular}}</td>
                             <td>{{$reservacion->users->name}}<br>{{$reservacion->users->apellido}}</td>
+                            <td>{{$reservacion->comentario}}</td>
                             <td style="display:flex ">
                                 <a href="{{ route('admin.reservaciones.edit', $reservacion) }}" class="btn
                                 btn-success">Editar</a>
-                                @if ( Auth::user()->tipo == "ADMIN" || Auth::user()->tipo == "RECEPCIONISTA")
+                                @if ( Auth::user()->tipo == "ADMIN")
                                 <form action="{{ route('admin.reservaciones.destroy', $reservacion->id) }}"
                                     method="post">
                                     @csrf
