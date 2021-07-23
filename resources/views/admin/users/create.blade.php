@@ -3,7 +3,7 @@
 @section('title', 'Centro Vet')
 
 @section('content_header')
-<h1>CREAR NUEVO CLIENTE </h1>
+<h1>CREAR NUEVO USUARIO </h1>
 @stop
 
 @section('content')
@@ -47,7 +47,7 @@
         </div>
         <div class="form-group col-sm">
             {!! Form::label('password', 'Contraseña') !!}<br>
-            {!! Form::password('password', null, ['class'=>'form-control']) !!}
+            {!! Form::password('password',['class'=>'form-control']) !!}
         </div>
     </div>
     <div class="row">

@@ -4,16 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Clientes;
-use App\Models\Mascotas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Laravel\Jetstream\Jetstream;
 
 class UsersController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +41,8 @@ class UsersController extends Controller
     {
 
         $request->validate([
-            'name' => 'required|max:100',
+            'name' => 'required|max:100|string',
+            'password' => 'required|max:100',
             'apellido' => 'required|max:100',
             'celular' => 'required|digits:9',
             'dni' => 'required|digits:8|integer|unique:clientes',
@@ -57,7 +54,19 @@ class UsersController extends Controller
             'domicilio' => 'required|max:100'
         ]);
 
-        $user = User::Create($request->all());
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'apellido' => $request->apellido,
+            'celular' =>$request->celular,
+            'dni' => $request->dni,
+            'fecha_nac' => $request->fecha_nac,
+            'edad' => $request->edad,
+            'sexo' => $request->sexo,
+            'tipo'=>$request->tipo,
+            'domicilio' =>$request->dni,
+            'password' => Hash::make($request->password)
+        ]);
 
         return redirect()->route('admin.users.index');
     }
